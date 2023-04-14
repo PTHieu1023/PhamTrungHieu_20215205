@@ -34,17 +34,18 @@ public class SolveEquation{
         System.out.print("c = ");
         c = sc.nextDouble();
         
-        if (a == 0 && b == 0 && c == 0){
-            System.out.println("Real number");
-            System.exit(0);
-        }else if(b == 0 && c != 0){
-            System.out.println("No solution");
-            System.exit(0);
-        }else{
-            double x = -c/b;
-            System.out.println("Equation has one solution x = " + x);
-            System.exit(0);
-
+        if (a == 0){
+            if(b == 0 && c == 0){
+                System.out.println("Real number");
+                System.exit(0);
+            }else if(b == 0 && c != 0){
+                System.out.println("No solution");
+                System.exit(0);
+            }else{
+                double x = -c/b;
+                System.out.println("Equation has one solution x = " + x);
+                System.exit(0);
+            }
         }
         
         double delta = b*b - 4*a*c;
