@@ -1,5 +1,6 @@
 public class DigitalVideoDisc {
-    
+    private static int nbDigitalVideoDisc = 0;
+    private int id;
     private String title;
     private String category;
     private String director;
@@ -22,7 +23,10 @@ public class DigitalVideoDisc {
     public float getCost(){
         return cost;
     }
-
+    public int getId()
+    {
+        return id;
+    }
     //Setters
     public void setTitle(String title){
         this.title = title;
@@ -39,17 +43,24 @@ public class DigitalVideoDisc {
     public void setCost(float cost){
         this.cost = cost;
     }
-
+    private void setId()
+    {
+        this.id = nbDigitalVideoDisc;
+    }
     //Build Contructors
 
     public DigitalVideoDisc(String title){
         setTitle(title);
+        nbDigitalVideoDisc++;
+        setId();
     }
 
     public DigitalVideoDisc(String category, String title, float cost){
         setCategory(category);
         setTitle(title);
         setCost(cost);
+        nbDigitalVideoDisc++;
+        setId();
     }
 
     public DigitalVideoDisc(String director, String category, String title, float cost){
@@ -57,6 +68,8 @@ public class DigitalVideoDisc {
         setCategory(category);
         setTitle(title);
         setCost(cost);
+        nbDigitalVideoDisc++;
+        setId();
     }
 
     public DigitalVideoDisc(String title, String category, String director, int length, float cost){
@@ -65,5 +78,13 @@ public class DigitalVideoDisc {
         setDirector(director);
         setLength(length);
         setCost(cost);
+        nbDigitalVideoDisc++;
+        setId();
+    }
+
+    public String toString()
+    {
+        String discInfo = getId() + ". DVD - " + getTitle() + " - " + getCategory() + " - " + getDirector() + " - " + getLength() + ": " + getCost() + " $"; 
+        return discInfo;
     }
 }

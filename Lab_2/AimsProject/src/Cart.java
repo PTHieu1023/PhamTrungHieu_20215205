@@ -26,7 +26,7 @@ public class Cart {
 
     //remove all discs be the same as parameter disc
     public void removeDigitalVideoDisc(DigitalVideoDisc disc){
-        int i =0;
+        int i = 0;
         boolean flag = false;
         while(i < qtyOrdered) {
             if (itemsOrdered[i] == disc){
@@ -57,14 +57,12 @@ public class Cart {
 
     //Show all item existing in cart
     public void showItemsOrdered(){
+        System.out.println("Order Items:");
+        
         for (int i = 0; i < qtyOrdered; i++){
-            System.out.println("Item " + (i+1));
-            System.out.println("Title: " + itemsOrdered[i].getTitle());  
-            System.out.println("Category: " + itemsOrdered[i].getCategory()); 
-            System.out.println("Director: " + itemsOrdered[i].getDirector());
-            System.out.println("Length: " + itemsOrdered[i].getLength());
-            System.out.println("Cost: " + itemsOrdered[i].getCost());   
-            System.out.println("__________________________________");         
+            System.out.println(itemsOrdered[i].toString());
         }
+        System.out.println("Total cost: " + totalCost() + " $");
+        
     }
 }
