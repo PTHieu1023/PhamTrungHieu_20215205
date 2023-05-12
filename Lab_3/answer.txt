@@ -1,2 +1,6 @@
 Questions:
-    1. 
+    1. Is JAVA a Pass by Value or a Pass by Reference programming language?
+    Answer: Java is a pass by value programming language. 
+    Arguments are passed as a copy of their value, not a reference to the original object or argument. 
+    However, if an argument is an object reference, the copy of the reference points to the same object as the original reference, 
+    which can sometimes cause confusion.
