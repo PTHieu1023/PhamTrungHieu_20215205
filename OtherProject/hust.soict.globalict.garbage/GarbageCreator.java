@@ -8,7 +8,7 @@ public class GarbageCreator {
         byte[] inputBytes = {0};
         long startTime, endTime;
         try{
-        inputBytes = Files.readAllBytes(Paths.get(filename));
+            inputBytes = Files.readAllBytes(Paths.get(filename));
         } catch (IOException e){
             e.printStackTrace();
         }
