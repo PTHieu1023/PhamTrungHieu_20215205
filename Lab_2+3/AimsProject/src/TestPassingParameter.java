@@ -6,6 +6,15 @@ public class TestPassingParameter {
         b = tmp;
     }
 
+    //Fix swap function to swap 2 object
+    public static void swapDVD(DigitalVideoDisc a, DigitalVideoDisc b){
+        //swap all properties of a and b, not swap a and b
+        //Example with title
+        String tmp = a.getTitle();
+        a.setTitle(b.getTitle());
+        b.setTitle(tmp);
+    }
+
     public static void changeTitle(DigitalVideoDisc dvd, String title){
         String oldTilte = dvd.getTitle();
         dvd.setTitle(title);

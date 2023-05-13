@@ -1,6 +1,6 @@
 public class StoreTest {
     public static void main(String[] args) {
-        //Create a new cart
+        //Create a new store
         Store store = new Store();
 
         //Create new dvd object and add them to the cart
