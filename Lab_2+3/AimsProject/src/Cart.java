@@ -1,28 +1,28 @@
 public class Cart {
     public static final int MAX_NUMBER_ORDERED = 20;
-    private DigitalVideoDisc itemsOrdered[] = new DigitalVideoDisc[MAX_NUMBER_ORDERED];
-    private int qtyOrdered;
+    private Media itemsOrdered[] = new Media[MAX_NUMBER_ORDERED];
+    private int qtyOrdered = 0;
 
     //Add DVD and sort by created date
-    public void addDigitalVideoDisc(DigitalVideoDisc disc){
+    public void addItem(Media item){
         if(qtyOrdered >= MAX_NUMBER_ORDERED){
             System.out.println("The cart is almost full");
         }else{
-            itemsOrdered[qtyOrdered] = disc;
+            itemsOrdered[qtyOrdered] = item;
             qtyOrdered++;
-            System.out.println("The disc has been added");     
+            System.out.println("The item has been added");     
         }
     }
 
     //Add a array of discs into cart
-    public void addDigitalVideoDisc(DigitalVideoDisc [] dvdList){
-        for (DigitalVideoDisc dvd : dvdList)
-            if(dvd != null)
-                addDigitalVideoDisc(dvd);
+    public void addItems(Media [] items){
+        for (Media item : items)
+            if(item != null)
+                addItem(item);
     } 
 
     //remove all discs be the same as parameter disc
-    public void removeDigitalVideoDisc(DigitalVideoDisc disc){
+    public void removeItem(Media disc){
         int i = 0;
         boolean flag = false;
         while(i < qtyOrdered) {
