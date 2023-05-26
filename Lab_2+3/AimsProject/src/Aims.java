@@ -5,13 +5,13 @@ public class Aims {
         Cart anOrder = new Cart();
 
         //Create new dvd objects and add them to the cart
-        Media dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
+        DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
         anOrder.addItem(dvd1);
-        Media dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
+        DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
         anOrder.addItem(dvd2);
-        Media dvd3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
+        DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
         anOrder.addItem(dvd3);
-        Media book1 = new Book("One Piece", "Manga Comic", "Eichiro Oda", 1.1f);
+        Book book1 = new Book("One Piece", "Manga Comic", "Eichiro Oda", 1.1f);
         anOrder.addItem(book1);
         Track track1 = new Track("Shape Of You", 3);
         Track track2 = new Track("Happy Now", 7);
@@ -27,4 +27,3 @@ public class Aims {
         System.out.println("Total cost is: " + anOrder.totalCost());  
     }
 }
-//Checking upadate

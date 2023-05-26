@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class CompactDisc extends Disc{
+public class CompactDisc extends Disc implements Playable{
     private static int nbCD = 0;
     
     private String artist;
@@ -14,23 +14,14 @@ public class CompactDisc extends Disc{
     public String getArtist() {
         return artist;
     }
-
-    public void addTrack(Track track) {
-        if (!tracks.contains(track))
-            tracks.add(track);
-    }
-
-    public void removeTrack(Track track) {
-        if(tracks.contains(track))
-            tracks.remove(track);
-    }
-
     public int getLength() {
         for(Track track : tracks) {
             length += track.getLength() ;
         }
         return length;
     }
+
+    //Contructors
     public CompactDisc(String title, String category, float cost, String artist, List<Track> tracks) {
         setTitle(title);
         setCategory(category);
@@ -49,9 +40,26 @@ public class CompactDisc extends Disc{
         incItem();
         setId();
     }
-    public String toString()
-    {
-        String discInfo = getId() + ". CD - " + getTitle() + " - " + getCategory() + " - " + getArtist() + " - " + getLength() + ": " + getCost() + "$"; 
+
+    //Add and Remove Tracks
+    public void addTrack(Track track) {
+        if (!tracks.contains(track))
+            tracks.add(track);
+    }
+
+    public void removeTrack(Track track) {
+        if(tracks.contains(track))
+            tracks.remove(track);
+    }
+
+    public String toString() {
+        String discInfo = getId() + ". CD - " + getTitle() + " - " + getCategory() + " - " + getArtist() +" - " + getLength() + " : " + getCost() + "$"; 
         return discInfo;
+    }
+    
+    @Override
+    public void play() {
+        for(Track track : tracks)
+            track.play();
     }
 }
