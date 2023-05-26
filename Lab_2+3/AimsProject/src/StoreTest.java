@@ -5,21 +5,21 @@ public class StoreTest {
 
         //Create new dvd object and add them to the cart
         DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
-        store.addDVD(dvd1);
+        store.addItem(dvd1);
         DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
-        store.addDVD(dvd2);
+        store.addItem(dvd2);
         DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
-        store.addDVD(dvd3);
+        store.addItem(dvd3);
         DigitalVideoDisc dvd4 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
         
         store.showItems();
 
         //Remove a object has same properties as an existed object => No object remove in store
-        store.removeDVD(dvd4);
+        store.removeItem(dvd4);
         store.showItems();
 
         //Remove a object contained in store => object was removed
-        store.removeDVD(dvd3);
+        store.removeItem(dvd3);
         store.showItems();
         
     }
