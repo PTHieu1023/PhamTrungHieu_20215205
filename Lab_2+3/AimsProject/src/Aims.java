@@ -225,6 +225,7 @@ public class Aims {
             case 4:
                 selectItem();
                 currentItem.play();
+                break;
             case 5:
                 placeOrder();
                 break;
@@ -272,14 +273,13 @@ public class Aims {
         cd.addTrack(track);
         store.addItem(cd);
         //User Interface
+        clearScreen();
         while(systemRunning)
             menu();
-            
     }
 
 
     private static void menu() {
-        clearScreen();
         showMenu();
         int chosen = sc.nextInt();
         switch (chosen) {
