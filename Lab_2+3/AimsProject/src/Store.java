@@ -35,7 +35,6 @@ public class Store {
     //Show items in store
     public void showItems(){
         System.out.println("Items:");
-        
         for (Media item : itemsInStore){
             System.out.println(item.toString());
         }
