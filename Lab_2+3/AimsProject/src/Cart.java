@@ -13,6 +13,8 @@ public class Cart {
             System.out.println("This item is already exist in cart");
         }else{
             itemsOrdered.add(item);
+            System.out.println("Item is added into cart");
+            
         }
     }
 

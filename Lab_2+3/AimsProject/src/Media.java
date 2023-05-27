@@ -1,9 +1,13 @@
+import java.util.Comparator;
+
 public class Media {
     private static int nbItems = 0;
     private int id = 0;
     private String title;
     private String category;
     private float cost;
+    public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
+    public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatoebyCostTitle();
     
     //Getter
     public int getNbItem() {
@@ -66,4 +70,19 @@ public class Media {
             return false;
         return true;
     }
+
+    public void play() {
+        if (this instanceof Book) {
+            System.out.println("Play is not available for \"Book\" items");
+        }
+        if (this instanceof DigitalVideoDisc) {
+            DigitalVideoDisc obj = (DigitalVideoDisc) this;
+            obj.play();
+        }
+        if (this instanceof CompactDisc) {
+            CompactDisc obj = (CompactDisc) this;
+            obj.play();
+        }
+    }
+
 }

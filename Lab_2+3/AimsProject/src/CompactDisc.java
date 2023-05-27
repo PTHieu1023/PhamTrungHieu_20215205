@@ -41,6 +41,14 @@ public class CompactDisc extends Disc implements Playable{
         setId();
     }
 
+    public CompactDisc(String title, String category, float cost) {
+        setTitle(title);
+        setCategory(category);
+        setCost(cost);
+        incItem();
+        setId();
+    }
+
     //Add and Remove Tracks
     public void addTrack(Track track) {
         if (!tracks.contains(track))

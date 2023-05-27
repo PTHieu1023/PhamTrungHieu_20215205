@@ -5,6 +5,12 @@ public class Store {
     private ArrayList<Media> itemsInStore = new ArrayList<Media>();     
     private int numberOfItemsInStore = 0;
     
+    public Media findByTitle(String title) {
+        for(Media item : itemsInStore)
+            if (item.getTitle().equals(title))
+                return item;
+        return null;
+    }
     //Add a new dvd into store
     void addItem(Media item)
     {
