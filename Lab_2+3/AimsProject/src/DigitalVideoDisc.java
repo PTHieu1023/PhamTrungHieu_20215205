@@ -1,18 +1,10 @@
-public class DigitalVideoDisc {
+public class DigitalVideoDisc extends Disc implements Playable {
+    
     private static int nbDigitalVideoDisc = 0;
-    private int id;
-    private String title;
-    private String category;
-    private String director;
-    private int length;
-    private float cost;
 
     //Getters
-    public String getTitle(){
-        return title;
-    }
-    public String getCategory(){
-        return category;
+    public static int getNbDVD() {
+        return nbDigitalVideoDisc;
     }
     public String getDirector(){
         return director;
@@ -20,38 +12,20 @@ public class DigitalVideoDisc {
     public int getLength(){
         return length;
     }
-    public float getCost(){
-        return cost;
-    }
-    public int getId()
-    {
-        return id;
-    }
+    
     //Setters
-    public void setTitle(String title){
-        this.title = title;
-    }
-    public void setCategory(String category){
-        this.category = category;
-    }
     public void setDirector(String director){
         this.director = director;
     }
     public void setLength(int length){
         this.length = length;
     }
-    public void setCost(float cost){
-        this.cost = cost;
-    }
-    private void setId()
-    {
-        this.id = nbDigitalVideoDisc;
-    }
     //Build Contructors
 
     public DigitalVideoDisc(String title){
         setTitle(title);
         nbDigitalVideoDisc++;
+        incItem();
         setId();
     }
 
@@ -60,6 +34,7 @@ public class DigitalVideoDisc {
         setTitle(title);
         setCost(cost);
         nbDigitalVideoDisc++;
+        incItem();
         setId();
     }
 
@@ -69,6 +44,7 @@ public class DigitalVideoDisc {
         setTitle(title);
         setCost(cost);
         nbDigitalVideoDisc++;
+        incItem();
         setId();
     }
 
@@ -79,6 +55,7 @@ public class DigitalVideoDisc {
         setLength(length);
         setCost(cost);
         nbDigitalVideoDisc++;
+        incItem();
         setId();
     }
 
@@ -88,13 +65,11 @@ public class DigitalVideoDisc {
         return discInfo;
     }
 
-    boolean isMatch(int id)
-    {
-        return getId() == id;
+    @Override
+    public void play() {
+        System.out.println("Playing DVD: " + this.getTitle());
+        System.out.println("DVD length: " + this.getLength());
     }
+    
 
-    boolean isMatch(String title)
-    {
-        return getTitle() == title;
-    }
 }
