@@ -14,6 +14,14 @@ public class Store {
                 return item;
         return null;
     }
+
+    public ArrayList<Media> getItemsInStore() {
+        return itemsInStore;
+    }
+    public int getNumberOfItemsInStore() {
+        return numberOfItemsInStore;
+    }
+    
     //Add a new dvd into store
     public void addItem(Media item)
     {

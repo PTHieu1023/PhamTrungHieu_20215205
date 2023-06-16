@@ -1,0 +1,14 @@
+{
+    "java.project.sourcePaths": ["src"],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": {
+        "include": [
+            "lib/**/*.jar"
+        ],
+        "exclude": [
+            "d:\\projects\\code\\zHJuniikJava\\lib\\openjfx-20.0.1_windows-x64_bin-sdk\\javafx-sdk-20.0.1\\lib\\javafx-swt.jar",
+            "d:\\projects\\code\\zHJuniikJava\\lib\\openjfx-20.0.1_windows-x64_bin-sdk\\javafx-sdk-20.0.1\\lib\\javafx.base.jar",
+            "d:\\projects\\code\\zHJuniikJava\\lib\\openjfx-20.0.1_windows-x64_bin-sdk\\javafx-sdk-20.0.1\\lib\\javafx.controls.jar"
+        ]
+    }
+}
