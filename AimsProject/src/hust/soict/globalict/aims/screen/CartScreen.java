@@ -17,6 +17,12 @@ import javafx.scene.Scene;
 public class CartScreen extends JFrame{
     private Cart cart;
     
+    private CartScreenController controller;
+
+    public CartScreenController getCartScreenController() {
+        return controller;
+    }
+
     public Cart getCart() {
         return cart;
     }
@@ -25,6 +31,7 @@ public class CartScreen extends JFrame{
         super();
 
         this.cart = cart;
+        this.controller = new CartScreenController(cart);
 
         JFXPanel fxPanel = new JFXPanel();
         this.add(fxPanel);
@@ -36,7 +43,6 @@ public class CartScreen extends JFrame{
             public void run() {
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("cart.fxml"));
-                    CartScreenController controller = new CartScreenController(cart);
                     loader.setController(controller);
                     Parent root = loader.load();
                     fxPanel.setScene(new Scene(root));

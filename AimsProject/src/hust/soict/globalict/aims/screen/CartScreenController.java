@@ -9,6 +9,7 @@ import hust.soict.globalict.aims.media.Playable;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -35,6 +36,10 @@ public class CartScreenController implements Initializable {
 
     @FXML
     private Button btnPlaceOrder;
+
+    public MenuItem getMenuViewStore() {
+        return menuViewStore;
+    }
 
     @FXML
     private Button btnPlay;
@@ -101,7 +106,7 @@ public class CartScreenController implements Initializable {
 
     @FXML
     void viewStore(ActionEvent event) {
-
+        
     }
 
 
@@ -131,7 +136,6 @@ public class CartScreenController implements Initializable {
             public void changed(ObservableValue<? extends String> observe, String oldStr, String newStr) {
                 showFilteredMedia();
             }
-
         });
         
     }

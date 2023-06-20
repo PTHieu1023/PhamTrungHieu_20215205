@@ -178,7 +178,6 @@ public class StoreScreen extends JFrame {
             btnAddToCart.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     cart.addItem(media);
-                    System.out.println("Item added");
                 }
             });
             
