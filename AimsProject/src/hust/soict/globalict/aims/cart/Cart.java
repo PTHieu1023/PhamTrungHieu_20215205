@@ -1,11 +1,12 @@
 package hust.soict.globalict.aims.cart;
-import java.util.ArrayList;
 
 import hust.soict.globalict.aims.media.Media;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Cart {
     public static final int MAX_NUMBER_ORDERED = 20;
-    private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
+    private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
     private int qtyOrdered = 0;
 
     //Add DVD and sort by created date
@@ -16,9 +17,17 @@ public class Cart {
             System.out.println("This item is already exist in cart");
         }else{
             itemsOrdered.add(item);
-            System.out.println("Item is added into cart");
+            System.out.println("Item added to cart");
             
         }
+    }
+
+    public ObservableList<Media> getItemsOrdered() {
+        return itemsOrdered;
+    }
+
+    public int getQtyOrdered() {
+        return qtyOrdered;
     }
 
     //Add a array of discs into cart

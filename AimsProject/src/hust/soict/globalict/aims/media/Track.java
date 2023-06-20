@@ -1,6 +1,4 @@
-package hust.soict.globalict.aims.store;
-
-import hust.soict.globalict.aims.media.Playable;
+package hust.soict.globalict.aims.media;
 
 public class Track implements Playable{
     private String title;

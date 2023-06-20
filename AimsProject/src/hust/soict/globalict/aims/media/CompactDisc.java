@@ -2,8 +2,6 @@ package hust.soict.globalict.aims.media;
 import java.util.ArrayList;
 import java.util.List;
 
-import hust.soict.globalict.aims.store.Track;
-
 public class CompactDisc extends Disc implements Playable{
     private static int nbCD = 0;
     

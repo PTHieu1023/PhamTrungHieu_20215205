@@ -3,8 +3,8 @@ package hust.soict.globalict.test.store;
 import hust.soict.globalict.aims.media.Book;
 import hust.soict.globalict.aims.media.CompactDisc;
 import hust.soict.globalict.aims.media.DigitalVideoDisc;
+import hust.soict.globalict.aims.media.Track;
 import hust.soict.globalict.aims.store.Store;
-import hust.soict.globalict.aims.store.Track;
 
 public class StoreTest {
     public static void main(String[] args) {
