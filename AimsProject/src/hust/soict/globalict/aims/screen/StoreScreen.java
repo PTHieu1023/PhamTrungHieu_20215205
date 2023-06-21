@@ -32,6 +32,17 @@ public class StoreScreen extends JFrame {
     private Cart cart;
     private int itemPage;
 
+    private CartScreen cartScreen;
+    private AddItemScreen addItemScreen;
+
+    public void setCartScreen(CartScreen cartScreen) {
+        this.cartScreen = cartScreen;
+    }
+
+    public void setAddItemScreen(AddItemScreen addItemScreen) {
+        this.addItemScreen = addItemScreen;
+    }
+
     private Container cp;
     private JPanel content;
 
@@ -58,16 +69,18 @@ public class StoreScreen extends JFrame {
     
     JMenuBar createMenuBar() {
         JMenu menu = new JMenu("Options");
+        JMenuItem addItem = new JMenuItem("Add Item");
 
-        JMenu updateMenu = new JMenu("Update Store");
-        updateMenu.add(new JMenuItem("Add Book"));
-        updateMenu.add(new JMenuItem("Add CD"));
-        updateMenu.add(new JMenuItem("Add DVD"));
+        addItem.addActionListener(
+            new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    addItemScreen.setVisible(true);
+                }
+            }
+        );
 
-        menu.add(updateMenu);
-        menu.add(new JMenuItem("View Store"));
-        menu.add(new JMenuItem("ViewCart"));
-
+        menu.add(addItem);
         JMenuBar menuBar = new JMenuBar();
         menuBar.setLayout(new FlowLayout(FlowLayout.LEFT));
         menuBar.add(menu);
@@ -88,6 +101,14 @@ public class StoreScreen extends JFrame {
         JLabel page = new JLabel("Page 1/" + (store.getNumberOfItemsInStore()/9+1));
         JButton prePage = new JButton("<");
         JButton nextPage = new JButton(">");
+        if(itemPage == 1)
+            prePage.setEnabled(false);
+        else
+            prePage.setEnabled(true);
+        if(itemPage == store.getNumberOfItemsInStore()/9+1)
+            nextPage.setEnabled(false);
+        else
+            nextPage.setEnabled(true);
         prePage.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 cp.remove(content);
@@ -95,8 +116,8 @@ public class StoreScreen extends JFrame {
                 page.setText("Page " + itemPage +"/" + (store.getNumberOfItemsInStore()/9+1));
                 if(itemPage == 1)
                     prePage.setEnabled(false);
-                else
-                    prePage.setEnabled(true);
+                if(itemPage <= store.getNumberOfItemsInStore()/9)
+                    nextPage.setEnabled(true);
                 content = createCenter(itemPage);
                 cp.add(content, BorderLayout.CENTER);
                 cp.revalidate();
@@ -108,10 +129,11 @@ public class StoreScreen extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 cp.remove(content);
                 itemPage += 1;
+                nextPage.setEnabled(true);
                 if(itemPage == store.getNumberOfItemsInStore()/9 + 1)
                     nextPage.setEnabled(false);
-                else
-                    nextPage.setEnabled(true);
+                if(itemPage > 1)
+                    prePage.setEnabled(true);
                 content = createCenter(itemPage);
                 content = createCenter(itemPage);
                 cp.add(content, BorderLayout.CENTER);
@@ -205,7 +227,6 @@ public class StoreScreen extends JFrame {
         this.cp.setLayout(new BorderLayout());
         this.cp.add(createNorth(), BorderLayout.NORTH);
         this.cp.add(this.content, BorderLayout.CENTER);
-
         setVisible(true);
         setTitle("Store");
         setSize(960, 720);

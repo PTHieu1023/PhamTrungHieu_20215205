@@ -9,7 +9,6 @@ import hust.soict.globalict.aims.media.Playable;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,6 +28,12 @@ public class CartScreenController implements Initializable {
 
     private Cart cart;
 
+    private StoreScreen storeScreen;
+
+    public void setStoreScreen(StoreScreen storeScreen) {
+        this.storeScreen = storeScreen;
+    }
+
     public CartScreenController(Cart cart) {
         super();
         this.cart = cart;
@@ -36,10 +41,6 @@ public class CartScreenController implements Initializable {
 
     @FXML
     private Button btnPlaceOrder;
-
-    public MenuItem getMenuViewStore() {
-        return menuViewStore;
-    }
 
     @FXML
     private Button btnPlay;
@@ -106,7 +107,7 @@ public class CartScreenController implements Initializable {
 
     @FXML
     void viewStore(ActionEvent event) {
-        
+        storeScreen.setVisible(true);
     }
 
 
