@@ -20,6 +20,10 @@ public class PlaceOrderScreen extends JFrame{
 
     private PlaceOrderScreenController controller;
 
+    public PlaceOrderScreenController getController() {
+        return controller;
+    }
+
     public PlaceOrderScreen(Cart cart) {
         this.cart = cart;
         controller = new PlaceOrderScreenController(cart);
@@ -41,9 +45,5 @@ public class PlaceOrderScreen extends JFrame{
             }
         });
         setSize(480, 640);
-    }
-    
-    public static void main(String[] args) {
-        new PlaceOrderScreen(new Cart());
     }
 }

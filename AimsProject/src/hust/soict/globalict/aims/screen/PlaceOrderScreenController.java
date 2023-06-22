@@ -1,26 +1,15 @@
 package hust.soict.globalict.aims.screen;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import hust.soict.globalict.aims.cart.Cart;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
-public class PlaceOrderScreenController implements Initializable{
+public class PlaceOrderScreenController {
 
    private Cart cart;
-
-   public Cart getCart() {
-      return cart;
-   }
-
-   public PlaceOrderScreenController(Cart cart) {
-      this.cart = cart;
-   }
 
    @FXML
    private Button btnCancel;
@@ -32,14 +21,18 @@ public class PlaceOrderScreenController implements Initializable{
    private VBox root;
 
    @FXML
+   private Label tfTotalPay;
+
+   @FXML
    void tbnCancelPressed(ActionEvent event) {
-      
+
    }
 
-   @Override
-   public void initialize(URL location, ResourceBundle resources) {
-      
+   public PlaceOrderScreenController(Cart cart) {
+      this.cart = cart;
    }
-   
 
+   public void setTotalPayText() {
+      tfTotalPay.setText("Total pay: " + cart.totalCost() + " $");
+   }
 }

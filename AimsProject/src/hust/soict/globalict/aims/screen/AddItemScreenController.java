@@ -221,6 +221,8 @@ public class AddItemScreenController implements Initializable {
     }
 
     private void resetStoreScreen() {
+        storeScreen.setVisible(true);
+        
         storeScreen.setMaxItemPage();
         if(storeScreen.getMaxItemPage() > storeScreen.getItemPage()) {
             storeScreen.getNextPageBtn().setEnabled(true);

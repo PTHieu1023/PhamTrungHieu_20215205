@@ -101,6 +101,7 @@ public class CartScreenController implements Initializable {
     @FXML
     void btnPlaceOrderPressed(ActionEvent event) {
         placeOrderScreen.setVisible(true);
+        placeOrderScreen.getController().setTotalPayText();
     }
 
     @FXML

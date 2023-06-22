@@ -25,6 +25,7 @@ import hust.soict.globalict.aims.cart.Cart;
 import hust.soict.globalict.aims.media.Media;
 import hust.soict.globalict.aims.media.Playable;
 import hust.soict.globalict.aims.store.Store;
+import javafx.application.Platform;
 
 public class StoreScreen extends JFrame {
     private Store store;
@@ -122,11 +123,9 @@ public class StoreScreen extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
-                    cartScreen.getCartScreenController().setTotalPayText();
                     cartScreen.setVisible(true);
                 } catch (Exception error) {
                     cartScreen = new CartScreen(cart);
-                    cartScreen.getCartScreenController().setTotalPayText();
                     cartScreen.setVisible(true);
                 }
             }
@@ -231,6 +230,9 @@ public class StoreScreen extends JFrame {
             btnAddToCart.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     cart.addItem(media);
+                    Platform.runLater(() -> {
+                        cartScreen.getCartScreenController().setTotalPayText();
+                    });
                 }
             });
             
