@@ -27,16 +27,6 @@ public class StoreTest {
         Track track2 = new Track("Track 2", 16);
         cd.addTrack(track2);
         store.addItem(cd);
-
-        
-        store.showItems();
-
-        //Remove a object has same properties as an existed object => No object remove in store
-        store.removeItem(dvd4);
-        store.showItems();
-
-        //Remove a object contained in store => object was removed
-        store.removeItem(dvd3);
-        store.showItems();
+        store.addItem(dvd4);
     }
 }

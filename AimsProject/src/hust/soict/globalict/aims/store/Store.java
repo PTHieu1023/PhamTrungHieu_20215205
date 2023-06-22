@@ -1,6 +1,8 @@
 package hust.soict.globalict.aims.store;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import hust.soict.globalict.aims.media.Media;
 
 public class Store {
@@ -26,11 +28,10 @@ public class Store {
     public void addItem(Media item)
     {
         if(numberOfItemsInStore == MAX_NUMBER_ITEMS_IN_STORE){
-            System.out.println("Number of disc in store has reached the limit!");
+            JOptionPane.showMessageDialog(null, "Store is full", "Warning", JOptionPane.INFORMATION_MESSAGE);
         
         } else if (itemsInStore.contains(item)) {
-            System.out.println("This item is already existed in store");
-            
+            JOptionPane.showMessageDialog(null, "This item is existed in store", "Warning", JOptionPane.INFORMATION_MESSAGE);
         } else {
             itemsInStore.add(item);
             numberOfItemsInStore++;
@@ -46,14 +47,6 @@ public class Store {
             changed = true;
         }
         if (!changed)
-            System.out.println("No item was remove!");        
-    }
-
-    //Show items in store
-    public void showItems(){
-        System.out.println("Items:");
-        for (Media item : itemsInStore){
-            System.out.println(item.toString());
-        }
+            JOptionPane.showMessageDialog(null, "No item was remove!", "Notice", JOptionPane.INFORMATION_MESSAGE);        
     }
 }

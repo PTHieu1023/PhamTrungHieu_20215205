@@ -27,6 +27,7 @@ public class PlaceOrderScreen extends JFrame{
     public PlaceOrderScreen(Cart cart) {
         this.cart = cart;
         controller = new PlaceOrderScreenController(cart);
+        controller.setPlaceOrderScreen(this);
         JFXPanel frame = new JFXPanel();
         this.add(frame);
         setTitle("Place Order");

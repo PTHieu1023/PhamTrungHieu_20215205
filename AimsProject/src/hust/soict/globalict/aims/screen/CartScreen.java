@@ -32,6 +32,7 @@ public class CartScreen extends JFrame{
 
         this.cart = cart;
         this.controller = new CartScreenController(cart);
+        controller.setCartScreen(this);
 
         JFXPanel fxPanel = new JFXPanel();
         this.add(fxPanel);
@@ -51,6 +52,6 @@ public class CartScreen extends JFrame{
                 }
             }
         });
-        this.setSize(1680, 720);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 }

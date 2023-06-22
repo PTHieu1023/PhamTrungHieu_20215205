@@ -23,28 +23,28 @@
             <Insets bottom="8.0" left="8.0" right="8.0" />
          </VBox.margin>
          <children>
-            <TextField promptText="Customer">
+            <TextField fx:id="tfCustomer" promptText="Customer">
                <VBox.margin>
                   <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                </VBox.margin>
                <font>
                   <Font name="Segoe UI" size="16.0" />
                </font></TextField>
-            <TextField promptText="Phone">
+            <TextField fx:id="tfPhone" promptText="Phone">
                <VBox.margin>
                   <Insets bottom="12.0" left="12.0" right="12.0" />
                </VBox.margin>
                <font>
                   <Font size="16.0" />
                </font></TextField>
-            <TextField promptText="Email">
+            <TextField fx:id="tfAddress" promptText="Address">
                <VBox.margin>
                   <Insets bottom="12.0" left="12.0" right="12.0" />
                </VBox.margin>
                <font>
                   <Font name="Segoe UI" size="16.0" />
                </font></TextField>
-            <TextField promptText="Bank">
+            <TextField fx:id="tfBank" promptText="Bank">
                <VBox.margin>
                   <Insets bottom="12.0" left="12.0" right="12.0" />
                </VBox.margin>
@@ -52,7 +52,7 @@
                   <Font size="16.0" />
                </font>
             </TextField>
-            <TextField promptText="Bank Account">
+            <TextField fx:id="tfBankAccount" promptText="Bank Account">
                <VBox.margin>
                   <Insets left="12.0" right="12.0" />
                </VBox.margin>
@@ -78,7 +78,7 @@
                         <Font name="Segoe UI Symbol" size="16.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnConfirm" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Purchase" textAlignment="JUSTIFY">
+                  <Button fx:id="btnConfirm" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnPurchasePressed" text="Purchase" textAlignment="JUSTIFY">
                      <HBox.margin>
                         <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                      </HBox.margin>

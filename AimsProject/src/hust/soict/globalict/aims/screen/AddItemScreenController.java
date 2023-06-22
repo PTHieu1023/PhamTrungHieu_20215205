@@ -2,6 +2,9 @@ package hust.soict.globalict.aims.screen;
 
 import java.util.List;
 import java.util.ResourceBundle;
+
+import javax.swing.JOptionPane;
+
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -136,7 +139,9 @@ public class AddItemScreenController implements Initializable {
         String category = tfCategory.getText();
         float cost = Float.parseFloat(tfCost.getText());
         String director = tfDirector.getText();
-        int length = Integer.parseInt(tfLength.getText());
+        int length = 0;
+        if(!tfLength.getText().isEmpty())
+            length = Integer.parseInt(tfLength.getText());
         store.addItem(new DigitalVideoDisc(title, category, director, length, cost));
         clearContent();
         resetStoreScreen();
@@ -180,16 +185,21 @@ public class AddItemScreenController implements Initializable {
         tfLength.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observe, String oldStr, String newStr) {
-                try {
-                    Integer.parseInt(tfLength.getText());
-                    tfLength.setStyle("-fx-text-fill: black;");
-                    if(isRequiedValid())
-                        btnAddDVD.setDisable(false);
-                    else
+                if(!tfLength.getText().isEmpty()) {
+                    try {
+                        Integer.parseInt(tfLength.getText());
+                        tfLength.setStyle("-fx-text-fill: black;");
+                        if(isRequiedValid())
+                            btnAddDVD.setDisable(false);
+                        else
+                            btnAddDVD.setDisable(true);
+                    } catch(NumberFormatException e) {
+                        tfLength.setStyle("-fx-text-fill: red;");
                         btnAddDVD.setDisable(true);
-                } catch(NumberFormatException e) {
-                    tfLength.setStyle("-fx-text-fill: red;");
-                    btnAddDVD.setDisable(true);
+                    }
+                } else if(isRequiedValid()) {
+                    btnAddDVD.setDisable(false);
+                    tfLength.setStyle("-fx-text-fill: black;");
                 }
             }
         });
@@ -221,6 +231,7 @@ public class AddItemScreenController implements Initializable {
     }
 
     private void resetStoreScreen() {
+        JOptionPane.showMessageDialog(null, "Item added to store!", "Notice", JOptionPane.INFORMATION_MESSAGE);
         storeScreen.setVisible(true);
         
         storeScreen.setMaxItemPage();

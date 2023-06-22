@@ -124,9 +124,11 @@ public class StoreScreen extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 try{
                     cartScreen.setVisible(true);
+                    setVisible(false);
                 } catch (Exception error) {
                     cartScreen = new CartScreen(cart);
                     cartScreen.setVisible(true);
+                    setVisible(false);
                 }
             }
         });
@@ -261,9 +263,8 @@ public class StoreScreen extends JFrame {
         this.cp.setLayout(new BorderLayout());
         this.cp.add(createNorth(), BorderLayout.NORTH);
         this.cp.add(this.content, BorderLayout.CENTER);
-        setVisible(true);
         setTitle("Store");
-        setSize(960, 720);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     public void  resetContentCenter() {

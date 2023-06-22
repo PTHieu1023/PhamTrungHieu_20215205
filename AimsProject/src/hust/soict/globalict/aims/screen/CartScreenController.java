@@ -3,6 +3,8 @@ package hust.soict.globalict.aims.screen;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javax.swing.JOptionPane;
+
 import hust.soict.globalict.aims.cart.Cart;
 import hust.soict.globalict.aims.media.Media;
 import hust.soict.globalict.aims.media.Playable;
@@ -28,6 +30,11 @@ public class CartScreenController implements Initializable {
 
     private Cart cart;
 
+    private CartScreen cartScreen;
+
+    public void setCartScreen(CartScreen cartScreen) {
+        this.cartScreen = cartScreen;
+    }
     private StoreScreen storeScreen;
     private PlaceOrderScreen placeOrderScreen;
 
@@ -107,12 +114,13 @@ public class CartScreenController implements Initializable {
     @FXML
     void btnRemovePressed(ActionEvent event) {
         cart.removeItem(tblMedia.getSelectionModel().getSelectedItem());
-        tblMedia.setItems(cart.getItemsOrdered());
         setTotalPayText();
+        JOptionPane.showMessageDialog(null, "Item removed", "Notice", JOptionPane.INFORMATION_MESSAGE);
     }
 
     @FXML
     void viewStore(ActionEvent event) {
+        cartScreen.setVisible(false);
         storeScreen.setVisible(true);
     }
 

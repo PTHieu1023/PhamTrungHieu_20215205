@@ -1,5 +1,7 @@
 package hust.soict.globalict.aims.cart;
 
+import javax.swing.JOptionPane;
+
 import hust.soict.globalict.aims.media.Media;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,13 +14,12 @@ public class Cart {
     //Add DVD and sort by created date
     public void addItem(Media item){
         if(qtyOrdered >= MAX_NUMBER_ORDERED){
-            System.out.println("The cart is almost full");
+            JOptionPane.showMessageDialog(null, "The cart is almost full", "Warning", JOptionPane.INFORMATION_MESSAGE);
         }else if (itemsOrdered.contains(item)) {
-            System.out.println("This item is already exist in cart");
+            JOptionPane.showMessageDialog(null, "Item is already exist in cart", "Warning", JOptionPane.INFORMATION_MESSAGE);
         }else{
             itemsOrdered.add(item);
-            System.out.println("Item added to cart");
-            
+            JOptionPane.showMessageDialog(null, "Item added to cart", "Notice", JOptionPane.INFORMATION_MESSAGE); 
         }
     }
 
@@ -46,7 +47,7 @@ public class Cart {
             flag = true;
         }
         if (!flag)
-            System.out.println("Not found the disc in cart!\nNo disc was removed");
+            JOptionPane.showMessageDialog(null, "Not found item!", "Notice", JOptionPane.INFORMATION_MESSAGE);
     }
 
     //Return sum of dvd's cost existing in cart
