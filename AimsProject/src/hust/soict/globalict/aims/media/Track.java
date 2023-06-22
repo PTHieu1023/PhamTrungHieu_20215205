@@ -1,5 +1,7 @@
 package hust.soict.globalict.aims.media;
 
+import javax.swing.JOptionPane;
+
 public class Track implements Playable{
     private String title;
     private int length;
@@ -27,8 +29,10 @@ public class Track implements Playable{
     
     @Override
     public void play(){
-        System.out.println("Playing track: " + this.getTitle());
-        System.out.println("Track length: " + this.getLength());
+        if(length > 0)
+            JOptionPane.showMessageDialog(null, "Playing Track: " + getTitle());
+        else
+            JOptionPane.showMessageDialog(null, "Track is empty");
     }
    
     @Override

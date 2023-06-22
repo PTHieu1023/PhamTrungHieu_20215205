@@ -239,8 +239,18 @@ public class StoreScreen extends JFrame {
             });
             
             container.add(btnAddToCart);
-            if (media instanceof Playable)
-                container.add(new JButton("Play"));
+            if (media instanceof Playable) {
+                JButton btnPlay = new JButton("Play");
+                btnPlay.addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        media.play();
+                    }
+                    
+                });
+                container.add(btnPlay);
+            }
 
             this.add(Box.createVerticalGlue());
             this.add(title);

@@ -3,15 +3,12 @@ package hust.soict.globalict.aims.screen;
 import javax.swing.JOptionPane;
 
 import hust.soict.globalict.aims.cart.Cart;
-import hust.soict.globalict.aims.media.Media;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 public class PlaceOrderScreenController {
    

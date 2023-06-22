@@ -73,9 +73,6 @@ public class Media {
     }
 
     public void play() {
-        if (this instanceof Book) {
-            System.out.println("Play is not available for \"Book\" items");
-        }
         if (this instanceof DigitalVideoDisc) {
             DigitalVideoDisc obj = (DigitalVideoDisc) this;
             obj.play();

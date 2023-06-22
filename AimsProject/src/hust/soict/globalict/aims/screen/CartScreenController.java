@@ -119,6 +119,11 @@ public class CartScreenController implements Initializable {
     }
 
     @FXML
+    void btnPlayPressed(ActionEvent event) {
+        tblMedia.getSelectionModel().getSelectedItem().play();
+    }
+
+    @FXML
     void viewStore(ActionEvent event) {
         cartScreen.setVisible(false);
         storeScreen.setVisible(true);

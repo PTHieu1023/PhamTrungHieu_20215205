@@ -2,6 +2,8 @@ package hust.soict.globalict.aims.media;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 public class CompactDisc extends Disc implements Playable{
     private static int nbCD = 0;
     
@@ -68,7 +70,11 @@ public class CompactDisc extends Disc implements Playable{
     
     @Override
     public void play() {
-        for(Track track : tracks)
-            track.play();
+        if(!tracks.isEmpty()) {
+            for(Track track : tracks)
+                track.play();
+        } else {
+            JOptionPane.showMessageDialog(null, "CD's content is empty");
+        }
     }
 }

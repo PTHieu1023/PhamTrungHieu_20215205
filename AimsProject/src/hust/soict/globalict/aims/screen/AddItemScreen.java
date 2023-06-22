@@ -29,7 +29,7 @@ public class AddItemScreen extends JFrame {
 
         this.store = store;
         this.controller = new AddItemScreenController(store);
-
+        this.controller.setAddItemScreen(this);
         JFXPanel fxPanel = new JFXPanel();
         this.add(fxPanel);
 

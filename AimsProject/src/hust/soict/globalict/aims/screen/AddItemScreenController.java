@@ -26,6 +26,11 @@ public class AddItemScreenController implements Initializable {
 
     private Store store;
     private StoreScreen storeScreen;
+    private AddItemScreen addItemScreen;
+
+    public void setAddItemScreen(AddItemScreen addItemScreen) {
+        this.addItemScreen = addItemScreen;
+    }
 
     public void setStoreScreen(StoreScreen storeScreen) {
         this.storeScreen = storeScreen;
@@ -233,7 +238,7 @@ public class AddItemScreenController implements Initializable {
     private void resetStoreScreen() {
         JOptionPane.showMessageDialog(null, "Item added to store!", "Notice", JOptionPane.INFORMATION_MESSAGE);
         storeScreen.setVisible(true);
-        
+        addItemScreen.setVisible(false);
         storeScreen.setMaxItemPage();
         if(storeScreen.getMaxItemPage() > storeScreen.getItemPage()) {
             storeScreen.getNextPageBtn().setEnabled(true);

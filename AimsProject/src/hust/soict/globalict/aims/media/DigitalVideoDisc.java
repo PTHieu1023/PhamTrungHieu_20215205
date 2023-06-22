@@ -1,5 +1,7 @@
 package hust.soict.globalict.aims.media;
 
+import javax.swing.JOptionPane;
+
 public class DigitalVideoDisc extends Disc implements Playable {
     
     private static int nbDigitalVideoDisc = 0;
@@ -69,9 +71,9 @@ public class DigitalVideoDisc extends Disc implements Playable {
 
     @Override
     public void play() {
-        System.out.println("Playing DVD: " + this.getTitle());
-        System.out.println("DVD length: " + this.getLength());
+        if(length > 0)
+            JOptionPane.showMessageDialog(null, "Playing DVD...");
+        else
+            JOptionPane.showMessageDialog(null, "DVD's content is empty");
     }
-    
-
 }
