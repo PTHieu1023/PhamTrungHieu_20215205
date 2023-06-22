@@ -8,7 +8,6 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.awt.Dimension;
 
 import javax.swing.BorderFactory;
@@ -31,9 +30,24 @@ public class StoreScreen extends JFrame {
     private Store store;
     private Cart cart;
     private int itemPage;
+    private int maxItemPage;
 
     private CartScreen cartScreen;
     private AddItemScreen addItemScreen;
+
+    private JLabel page;
+    private JButton prePage;
+    private JButton nextPage;
+    private Container cp;
+    private JPanel content;
+
+    public JLabel getPage() {
+        return page;
+    }
+
+    public JButton getNextPageBtn() {
+        return nextPage;
+    }
 
     public void setCartScreen(CartScreen cartScreen) {
         this.cartScreen = cartScreen;
@@ -43,20 +57,28 @@ public class StoreScreen extends JFrame {
         this.addItemScreen = addItemScreen;
     }
 
-    private Container cp;
-    private JPanel content;
+    public int getMaxItemPage() {
+        return maxItemPage;
+    }
 
+    public void setMaxItemPage() {
+        this.maxItemPage = this.store.getNumberOfItemsInStore() / 9 + 
+                            (this.store.getNumberOfItemsInStore() % 9 == 0 && store.getNumberOfItemsInStore() > 0 ? 0 : 1);
+    }
+
+    public JPanel getContentPanel() {
+        return content;
+    }
+
+    public void setContentPanel() {
+        createCenter(itemPage);
+    }
     public int getItemPage() {
         return itemPage;
     }
-    JButton btnViewCart = new JButton("View Cart");
 
     public Cart getCart() {
         return cart;
-    }
-
-    public JButton getBtnViewCart() {
-        return btnViewCart;
     }
 
     JPanel createNorth() {
@@ -95,51 +117,62 @@ public class StoreScreen extends JFrame {
         JLabel title = new JLabel("AIMS");
         title.setFont(new Font(title.getFont().getName(), Font.PLAIN, 50));
         title.setForeground(Color.CYAN);
-
+        JButton btnViewCart = new JButton("View Cart");
+        btnViewCart.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    cartScreen.getCartScreenController().setTotalPayText();
+                    cartScreen.setVisible(true);
+                } catch (Exception error) {
+                    cartScreen = new CartScreen(cart);
+                    cartScreen.getCartScreenController().setTotalPayText();
+                    cartScreen.setVisible(true);
+                }
+            }
+        });
         btnViewCart.setPreferredSize(new Dimension(100, 50));
         btnViewCart.setMaximumSize (new Dimension(100, 50));
-        JLabel page = new JLabel("Page 1/" + (store.getNumberOfItemsInStore()/9+1));
-        JButton prePage = new JButton("<");
-        JButton nextPage = new JButton(">");
+        btnViewCart.addActionListener(
+            new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    cartScreen.setVisible(true);
+                }
+            });
+            
+        page = new JLabel("Page 1/" + getMaxItemPage());
+        prePage = new JButton("<");
+        nextPage = new JButton(">");
         if(itemPage == 1)
             prePage.setEnabled(false);
         else
             prePage.setEnabled(true);
-        if(itemPage == store.getNumberOfItemsInStore()/9+1)
+        if(itemPage == getMaxItemPage())
             nextPage.setEnabled(false);
         else
             nextPage.setEnabled(true);
         prePage.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                cp.remove(content);
                 itemPage -= 1;
-                page.setText("Page " + itemPage +"/" + (store.getNumberOfItemsInStore()/9+1));
+                page.setText("Page " + itemPage +"/"  + getMaxItemPage());
                 if(itemPage == 1)
                     prePage.setEnabled(false);
                 if(itemPage <= store.getNumberOfItemsInStore()/9)
                     nextPage.setEnabled(true);
-                content = createCenter(itemPage);
-                cp.add(content, BorderLayout.CENTER);
-                cp.revalidate();
-                cp.repaint();
+                resetContentCenter();
             }
         });
 
         nextPage.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                cp.remove(content);
                 itemPage += 1;
+                page.setText("Page " + itemPage +"/" + getMaxItemPage());
                 nextPage.setEnabled(true);
-                if(itemPage == store.getNumberOfItemsInStore()/9 + 1)
+                if(itemPage == getMaxItemPage())
                     nextPage.setEnabled(false);
                 if(itemPage > 1)
                     prePage.setEnabled(true);
-                content = createCenter(itemPage);
-                content = createCenter(itemPage);
-                cp.add(content, BorderLayout.CENTER);
-                cp.revalidate();
-                cp.repaint();
-                page.setText("Page " + itemPage +"/" + (store.getNumberOfItemsInStore()/9+1));
+                resetContentCenter();;
             }
         });
 
@@ -158,21 +191,19 @@ public class StoreScreen extends JFrame {
         return header;
     }
 
-    JPanel createCenter(int page) {  
-        JPanel center = new JPanel();
-        center.setLayout(new GridLayout(3, 3, 2, 2));
+    public void createCenter(int page) {  
+        content = new JPanel();
+        content.setLayout(new GridLayout(3, 3, 2, 2));
 
-        ArrayList<Media> medias = store.getItemsInStore();
         for(int i = (page-1)*9; i < page*9; i++) {
             if(i < store.getNumberOfItemsInStore())
             {
-                MediaStore cell = new MediaStore(medias.get(i));
-                center.add(cell);
+                MediaStore cell = new MediaStore(store.getItemsInStore().get(i));
+                content.add(cell);
             } else {
                 break;
             }
         }
-        return center;
     }
 
     public class MediaStore extends JPanel {
@@ -221,8 +252,9 @@ public class StoreScreen extends JFrame {
     public StoreScreen(Store store, Cart cart) {
         this.store = store;
         this.cart = cart;
+        setMaxItemPage();
         this.itemPage = 1;
-        this.content = createCenter(itemPage);
+        createCenter(itemPage);
         this.cp = getContentPane();
         this.cp.setLayout(new BorderLayout());
         this.cp.add(createNorth(), BorderLayout.NORTH);
@@ -230,5 +262,13 @@ public class StoreScreen extends JFrame {
         setVisible(true);
         setTitle("Store");
         setSize(960, 720);
+    }
+
+    public void  resetContentCenter() {
+        cp.remove(content);
+        createCenter(itemPage);
+        cp.add(content, BorderLayout.CENTER);
+        cp.revalidate();
+        cp.repaint();
     }
 }

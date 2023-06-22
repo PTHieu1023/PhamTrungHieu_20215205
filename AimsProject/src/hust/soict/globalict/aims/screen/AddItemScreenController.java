@@ -22,6 +22,11 @@ import javafx.scene.layout.VBox;
 public class AddItemScreenController implements Initializable {
 
     private Store store;
+    private StoreScreen storeScreen;
+
+    public void setStoreScreen(StoreScreen storeScreen) {
+        this.storeScreen = storeScreen;
+    }
 
     @FXML
     private Button btnAddBook;
@@ -88,7 +93,6 @@ public class AddItemScreenController implements Initializable {
         extendBook.setDisable(true);
         extendDVD.setVisible(false);
         extendDVD.setDisable(true);
-
     }
 
     @FXML
@@ -112,6 +116,7 @@ public class AddItemScreenController implements Initializable {
             authors.add(author);
         store.addItem(new Book(title, category, authors, cost));
         clearContent();
+        resetStoreScreen();
     }
 
     @FXML
@@ -122,6 +127,7 @@ public class AddItemScreenController implements Initializable {
         String director = tfDirectorCD.getText();
         store.addItem(new CompactDisc(title, category, cost, director));
         clearContent();
+        resetStoreScreen();
     }
 
     @FXML
@@ -133,6 +139,7 @@ public class AddItemScreenController implements Initializable {
         int length = Integer.parseInt(tfLength.getText());
         store.addItem(new DigitalVideoDisc(title, category, director, length, cost));
         clearContent();
+        resetStoreScreen();
     }
 
 
@@ -211,5 +218,15 @@ public class AddItemScreenController implements Initializable {
             return false;
         }
         return !tfTitle.getText().isEmpty();
+    }
+
+    private void resetStoreScreen() {
+        storeScreen.setMaxItemPage();
+        if(storeScreen.getMaxItemPage() > storeScreen.getItemPage()) {
+            storeScreen.getNextPageBtn().setEnabled(true);
+        }
+        storeScreen.getPage().setText("Page " + storeScreen.getItemPage() + "/" + storeScreen.getMaxItemPage());
+        if(storeScreen.getItemPage() == storeScreen.getMaxItemPage())
+            storeScreen.resetContentCenter();
     }
 }

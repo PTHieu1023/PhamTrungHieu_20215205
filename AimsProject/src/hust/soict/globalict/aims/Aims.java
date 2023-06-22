@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import hust.soict.globalict.aims.cart.Cart;
 import hust.soict.globalict.aims.media.Book;
+import hust.soict.globalict.aims.media.DigitalVideoDisc;
 import hust.soict.globalict.aims.screen.SceenController;
 import hust.soict.globalict.aims.store.Store;
 
@@ -13,9 +14,10 @@ public class Aims {
     static Store store = new Store();
 
     public static void main(String[] args) {
-        for(int i = 0; i<99; i++){
-            store.addItem(new Book("Sample Book " + i, "Sample", (float)i));
+        for(int i = 0; i < 20; i++) {
+            store.addItem(new Book("Sample " + i, "Sample Book", i));
+            store.addItem(new DigitalVideoDisc("Sample DVD " + i, "Sample DVD", i));
         }
-        SceenController screenController = new SceenController(store, cart);
+        new SceenController(store, cart);
     }
 }

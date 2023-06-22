@@ -29,9 +29,14 @@ public class CartScreenController implements Initializable {
     private Cart cart;
 
     private StoreScreen storeScreen;
+    private PlaceOrderScreen placeOrderScreen;
 
     public void setStoreScreen(StoreScreen storeScreen) {
         this.storeScreen = storeScreen;
+    }
+
+    public void setPlaceOrderScreen(PlaceOrderScreen placeOrderScreen) {
+        this.placeOrderScreen = placeOrderScreen;
     }
 
     public CartScreenController(Cart cart) {
@@ -95,7 +100,7 @@ public class CartScreenController implements Initializable {
 
     @FXML
     void btnPlaceOrderPressed(ActionEvent event) {
-
+        placeOrderScreen.setVisible(true);
     }
 
     @FXML
@@ -117,10 +122,7 @@ public class CartScreenController implements Initializable {
         colMediaCategory.setCellValueFactory(new PropertyValueFactory<Media, String>("category"));
         colMediaCost.setCellValueFactory(new PropertyValueFactory<Media, Float>("cost"));
 
-        tblMedia.setItems(cart.getItemsOrdered());      
-        
-        setTotalPayText();
-
+        tblMedia.setItems(cart.getItemsOrdered());  
         btnPlay.setVisible(false);
         btnRemove.setVisible(false);
 
@@ -149,7 +151,7 @@ public class CartScreenController implements Initializable {
             btnPlay.setVisible(false);
     }
 
-    void setTotalPayText() {
+    public void setTotalPayText() {
         totalPayText.setText(cart.totalCost() + " $");
     }
 

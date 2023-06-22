@@ -14,6 +14,10 @@ public class AddItemScreen extends JFrame {
 
     private Store store;
 
+    public Store getStore() {
+        return store;
+    }
+
     private AddItemScreenController controller;
 
     public AddItemScreenController getController() {
@@ -44,7 +48,6 @@ public class AddItemScreen extends JFrame {
                 }
             }
         });
-        this.setSize(480, 640);
-        
+        this.setSize(480, 640);  
     }
 }
