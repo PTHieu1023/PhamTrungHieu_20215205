@@ -52,6 +52,7 @@ public class PlaceOrderScreenController {
          while(!cart.getItemsOrdered().isEmpty())
             cart.removeItem(cart.getItemsOrdered().get(0));
          placeOrderScreen.setVisible(false);
+         cartScreenController.setTotalPayText();
       }
    }
 
@@ -62,6 +63,11 @@ public class PlaceOrderScreenController {
 
    private Cart cart;
    private PlaceOrderScreen placeOrderScreen;
+   private CartScreenController cartScreenController;
+
+   public void setCartScreenController(CartScreenController cartScreenController) {
+      this.cartScreenController = cartScreenController;
+   }
 
 
    public void setPlaceOrderScreen(PlaceOrderScreen placeOrderScreen) {

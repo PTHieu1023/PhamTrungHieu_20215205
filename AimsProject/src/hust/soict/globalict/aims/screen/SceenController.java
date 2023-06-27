@@ -44,5 +44,7 @@ public class SceenController {
 
         storeScreen.setAddItemScreen(addItemScreen);
         storeScreen.setCartScreen(cartScreen);
+
+        placeOrderScreen.getController().setCartScreenController(cartScreen.getCartScreenController());
     }
 }
